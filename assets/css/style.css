@@ -1,9 +1,9 @@
 :root {
     --primary: #ccdad1;
-    --secondary: #9caea9;
-    --tertiary: #788585;
-    --light-dark: #6f6866;
-    --dark: #38302e;
+    --secondary: #0df0b0;
+    --tertiary: #ee86fc;
+    --light-dark: #444e5a;
+    --dark: #322e38;
     --border-radius: .3rem;
   }
   
@@ -42,7 +42,7 @@
     font-size: 1.2rem;
   }
   
-   .btn {
+  .btn {
     font-size: 1.3rem;
     text-decoration:none;
     padding: 6px 5px;
@@ -58,7 +58,7 @@
     transform: translate(-1px, -1px);
   }
   
-   .btn:hover {
+  .btn:hover {
     color: var(--primary);
     background-color: var(--tertiary);
     transform: translate(0, 0);
@@ -85,7 +85,7 @@
     font-size: 1.2rem;
   }
   
-   .btn-back:hover {
+  .btn-back:hover {
     color: var(--primary);
     background-color: var(--tertiary);
     transform: translate(0, 0);
@@ -161,6 +161,10 @@
   
   .card-body {
     padding: 2.5%;
+  }
+
+  .history {
+    margin-top: 20px;
   }
   
   /* FORM */
@@ -499,6 +503,20 @@
       flex: 0 0 100%;
     }
   }
-  
-  
-  
+
+  /* Demo styles from OpenWeather API */
+  .weather-wrapper {
+    background: skyblue;
+    margin: 5% 0 5% 5%;
+    padding: 40px 5%;
+    float: right;
+    color: white;
+    width: 70%;
+    max-width: 400px;
+  }
+  strong {
+    color: steelblue;
+  }
+  .capitalize {
+    text-transform: capitalize;
+  }
