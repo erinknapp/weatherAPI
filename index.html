@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -22,32 +22,95 @@
     </div>
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <h3>City Weather</h3>
-                <br />
-                <form id="city-form">
-                    <label for="city" class="col-sm-4 col-form-label">City: </label>
-                    <input type="text" class="form-control" id="city" />
-                    <button type="submit" value="Submit" class="btn btn-info">
-                        Submit
-                    </button>
+        <!--City submit and current weather-->
+        <div class="flex-row justify-space-between">
+            <div class="col-12 col-md-4">
+                <h3 class="card-header test-uppercase">Search by City</h3>
+                <form id="city-form" class="card-body">
+                    <label for="city" class="col-sm-4 col-form-label">City</label>
+                    <input type="text" class="form-control" id="city-input" />
+                    <button type="submit" value="submit" class="btn">Submit</button>
                 </form>
             </div>
-            <div class="col-6">
-                <h3>Current Weather Display</h3>
-                <br />
-                <div class="weather-focus" id="weather-details">
-                    
-                </div>
-
-            </div>
+            <div class="col-12 col-md-8">
+            <h2  style="float:right" class ="subtitle">
+                Showing Current Weather for: 
+                <span id="weather-search-term"></span> 
+            </h2>
+            <div id="weather-container" class="display-current"></div>
+            <!--Sample display from OpenWeather API-->
+            <div class="card card-body weather-wrapper">
+                <img src="" class="weather-icon" alt="Weather Icon" />
+                <p><strong>Place</strong>
+                <br /><span class="weather-place"></span></p>
+                <p><strong>Temperature</strong>
+                <br /><span class="weather-temperature"></span> (<span class="weather-min-temperature"></span> - <span class="weather-max-temperature"></span>)</p>
+                <p><strong>Description</strong>
+                <br /><span class="weather-description capitalize"></span></p>
+                <p><strong>Humidity</strong>
+                <br /><span class="weather-humidity"></span></p>
+                <p><strong>Wind speed</strong>
+                <br /><span class="weather-wind-speed"></span></p>
+                <p><strong>Sunrise</strong>
+                <br /><span class="weather-sunrise"></span></p>
+                <p><strong>Sunset</strong>
+                <br /><span class="weather-sunset"></span></p>
+            </div> 
+        </div>
         </div>
     </div>
 
+<div class="container">
+    <div class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <h3 class="card-header test-uppercase">City Search History</h3>
+                <ul class="list-group" id="history-list">
+
+                </ul>
+            </div>
+        </div>
+</div>
+</div>
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./assets/openweather.js"></script>
 <script src="./assets/js/script.js"></script>
+
+
+<script>
+
+    $(function() {
+
+        $('.weather-temperature').openWeather({
+            key: 'c9d49310f8023ee2617a7634de23c2aa',
+            city: 'Los Angeles',
+            descriptionTarget: '.weather-description',
+            windSpeedTarget: '.weather-wind-speed',
+            minTemperatureTarget: '.weather-min-temperature',
+            maxTemperatureTarget: '.weather-max-temperature',
+            humidityTarget: '.weather-humidity',
+            sunriseTarget: '.weather-sunrise',
+            sunsetTarget: '.weather-sunset',
+            placeTarget: '.weather-place',
+            iconTarget: '.weather-icon',
+            customIcons: '../src/img/icons/weather/',
+            success: function(data) {
+                // show weather
+                $('.weather-wrapper').show();
+                console.log(data);
+            },
+            error: function(data) {
+                console.log(data.error);
+                $('.weather-wrapper').remove();
+            }
+        });
+
+    });
+
+</script>
+
 </body>
 
 </html>

@@ -1,9 +1,9 @@
 :root {
     --primary: #ccdad1;
-    --secondary: #9caea9;
-    --tertiary: #788585;
-    --light-dark: #6f6866;
-    --dark: #38302e;
+    --secondary: #0df0b0;
+    --tertiary: #ee86fc;
+    --light-dark: #444e5a;
+    --dark: #322e38;
     --border-radius: .3rem;
   }
   
@@ -499,6 +499,30 @@
       flex: 0 0 100%;
     }
   }
+
+  /* Demo styles from OpenWeather API */
+  .weather-wrapper {
+    background: skyblue;
+    margin: 5% 0 5% 5%;
+    padding: 40px 5%;
+    float: right;
+    color: white;
+    width: 70%;
+    max-width: 400px;
+  }
   
+  strong {
+    color: steelblue;
+  }
   
+  .capitalize {
+    text-transform: capitalize;
+  }
+
+  strong {
+    color: steelblue;
+  }
   
+  .capitalize {
+    text-transform: capitalize;
+  }
