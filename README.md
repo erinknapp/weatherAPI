@@ -8,4 +8,6 @@ https://erinknapp.github.io/weatherAPI/
 
 ### Images
 
-https://github.com/erinknapp/weatherAPI/blob/develop/assets/images/openweatherscreenshot.PNG
+![Weather App Screenshot](https://github.com/erinknapp/weatherAPI/blob/develop/assets/images/openweatherscreenshot.PNG)
+
+

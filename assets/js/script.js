@@ -1,10 +1,15 @@
 // Global variables
+var cityList = [];
 var cityFormEl = document.querySelector("city-form");
 var historyListEl = document.querySelector("history-list");
 var weatherSearchTerm = document.querySelector ("weather-search-term");
 var weatherContainer = document.querySelector("weather-container");
-var cityInputEl = document.querySelector("city-input");
+var APIkey = "1f193a6993fbc7775567c85ed6ca33da";
 
+//Print history of searched cities
+//Create funtion to capture stored data (city names) from localstorage
+//then create a dynamic list of cities
+//append each city as the user enters them
 var printHistory = function (city) {
     var listEl = city;
     listEl.addClass('list-group-item').text(listDetail);
@@ -12,37 +17,26 @@ var printHistory = function (city) {
 }
 
 // Function for form submission and error checking
-var formSubmitHandler = function (event) {
-    //prevent default reloading webpage
+//using array features such as push (add city to array) and shift
+$("#city-input").on("click", function(event){
     event.preventDefault();
 
-    var city = cityInputEl.value.trim();
+    var cityname = $("#city-input").val().trim();
+    if(cityname === "") {
 
-    // error check
-    if (city) {
-        getCity(city);
-        cityFormEl.textContent = "";
-        cityInputEl = "";
-    } else (
-        alert('Please enter a city name')
-    )
-
-    printHistory(city);
-};
-
-//button click event
-var buttonClickHandler = function (event) {
-    var name = event.target.getAttribute('data-name');
-    if (name) {
-        getCity(name);
-
-        weatherContainer.textContent = "";
+    } else if(cityList.length >= 3) {
+        cityList.shift();
+        cityList.push(cityname);
+    } else {
+        cityList.push(cityname);    
     }
-};
 
-// Function to capture city data for use in API
+    //call to a function that would display the city and weather data
+});
+
+// Function to display the city and weather data
 var getCity = function (city) {
-    var apiURL = "api.openweathermap.org/data/2.5/weather?q=" + cityInputEl + "&appid=1f193a6993fbc7775567c85ed6ca33da";
+    var apiURL = "api.openweathermap.org/data/2.5/weather?q=" + cityInputEl + "&appid=" + APIkey;
 
     fetch(apiURL)
         .then(function (response) {
@@ -55,6 +49,7 @@ var getCity = function (city) {
                 alert("Error: " + response.statusText);
             }
         })
+        //built in error handling for server status
         .catch(function (error) {
                 alert('Unable to connect to OpenWeather');
         });
@@ -62,7 +57,6 @@ var getCity = function (city) {
 
 // Function to display results based on city search
 var displayWeather = function () {
-
+    //display current temp, high temp, low temp, UV index, weather state, wind
+    // 
 };
-
-cityFormEl.addEventListener('submit', formSubmitHandler);
