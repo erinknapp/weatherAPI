@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="/src/openweather.js"></script>
 
     <title>Weather API</title>
 </head>
@@ -31,6 +33,15 @@
                     <input type="text" class="form-control" id="city-input" />
                     <button type="submit" value="submit" class="btn">Submit</button>
                 </form>
+                <br />
+
+                <div class="card">
+                    <h3 class="card-header test-uppercase">City Search History</h3>
+                    <ul class="list-group" id="history-list">
+    
+                    </ul>
+                </div>
+
             </div>
             <div class="col-12 col-md-8">
             <h2  style="float:right" class ="subtitle">
@@ -60,7 +71,7 @@
         </div>
     </div>
 
-<div class="container">
+<!-- <div class="container">
     <div class="flex-row justify-space-between">
         <div class="col-12 col-md-4">
             <div class="card">
@@ -71,15 +82,12 @@
             </div>
         </div>
 </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="./assets/openweather.js"></script>
-<script src="./assets/js/script.js"></script>
+</div> -->
 
 
-<script>
+
+
+<!-- <script>
 
     $(function() {
 
@@ -107,7 +115,7 @@
             }
         });
 
-    });
+    }); -->
 
 </script>
 
