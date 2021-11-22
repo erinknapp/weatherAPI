@@ -1,10 +1,15 @@
 // Global variables
-var cityFormEl = document.querySelector("#city-form");
-var historyListEl = document.querySelector("#history-list");
-var weatherSearchTerm = document.querySelector ("#weather-search-term");
-var weatherContainer = document.querySelector("#weather-container");
-var cityInputEl = document.querySelector("#city-input");
+var cityFormEl = document.querySelector("city-form");
+var historyListEl = document.querySelector("history-list");
+var weatherSearchTerm = document.querySelector ("weather-search-term");
+var weatherContainer = document.querySelector("weather-container");
+var cityInputEl = document.querySelector("city-input");
 
+var printHistory = function (city) {
+    var listEl = city;
+    listEl.addClass('list-group-item').text(listDetail);
+    listEl.appendTo(historyListEl);
+}
 
 // Function for form submission and error checking
 var formSubmitHandler = function (event) {
@@ -21,6 +26,8 @@ var formSubmitHandler = function (event) {
     } else (
         alert('Please enter a city name')
     )
+
+    printHistory(city);
 };
 
 //button click event
